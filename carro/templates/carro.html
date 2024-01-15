@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'css' %}
+<link rel="stylesheet" href="{% static 'carro/css/carro.css' %}">
+{% endblock %}
+
+{% block 'body' %}
+<br>
+<br>
+<div class="container">
+    <h1 class="display-1 geral">Informações</h1>
+    <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="{{carro.imagem.url}}" class="card-img-top h-100" alt="...">
+        </div>
+        <div class="col-sm-8">
+            <table class="table table-dark table-striped table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Nome:</td>
+                        <td>{{carro.nome}}</td>
+                    </tr>
+                    <tr>
+                        <td>Marca:</td>
+                        <td>{{carro.marca}}</td>
+                    </tr>
+                    <tr>
+                        <td>Ano:</td>
+                        <td>{{carro.ano}}</td>
+                    </tr>
+                    <tr>
+                        <td>Motor:</td>
+                        <td>{{carro.motor}}</td>
+                    </tr>
+                    <tr>
+                        <td>Decrição:</td>
+                        <td>{{carro.descricao}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    
+      <!-- VIDEO -->
+      <h1 class="display-1 geral">Video</h1>
+        <br>
+        <div class="row linha">
+          <div class="col-md-6">
+            <div class="card-body" >
+              <iframe width="560" height="315" src="{{carro.url_video}}"
+               title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+</div>
+{% endblock %}

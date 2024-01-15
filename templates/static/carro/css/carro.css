@@ -1,0 +1,36 @@
+table{
+    height: 100%;
+    width: 100%;
+}
+
+.geral{
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px rgb(0, 0, 0);
+    text-align: center;
+}
+
+.linha{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.tab{
+    text-align: center;
+}
+
+.caixa{
+    background-color: #212F3D;
+}
+
+.imagem{
+    height: 225px;
+}
+
+.nome-car{
+    color: white;
+}
+
+.botao{
+    margin: 0 auto;
+}

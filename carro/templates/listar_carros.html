@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'css' %}
+<link rel="stylesheet" href="{% static 'carro/css/carro.css' %}">
+{% endblock %}
+
+{% block 'body' %}
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        {% for carro in carros %}
+        <div class="col-md-4 tab">
+            <div class="card mb-4 box-shadow caixa">
+                <img class="card-img-top imagem" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                    src="{{carro.imagem.url}}">
+                <div class="card-body">
+                    <h3 class="jumbotron-heading nome-car">{{carro.nome}}</h3>
+                    <br>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group botao">
+                            <a href="{% url 'exibir_carro' carro.slug %}"><button type="button"
+                                    class="btn btn-primary">Acessar</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
