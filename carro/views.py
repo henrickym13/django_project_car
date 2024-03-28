@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Carro, Continente, Marca
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -7,7 +8,11 @@ def listar_carros(request, slug):
     if request.method == "GET":
         marca = Marca.objects.get(slug=slug)
         carros = Carro.objects.filter(marca=marca)
-        return render(request, 'listar_carros.html', {'carros': carros})
+        carros_pg = Paginator(carros, 9)
+
+        page_number = request.GET.get('page')
+        page_obj = carros_pg.get_page(page_number)
+        return render(request, 'listar_carros.html', {'page_obj': page_obj})
 
 
 def exibir_carro(request, slug):
@@ -16,20 +21,12 @@ def exibir_carro(request, slug):
         return render(request, 'carro.html', {'carro':carro})
 
 
-def listar_continentes(request):
+def exibir_marcas(request, nome):
     if request.method == "GET":
-        continentes = Continente.objects.all()
-        return render(request, 'index.html', {'continentes': continentes})
-
-
-def exibir_marcas(request, slug):
-    if request.method == "GET":
-        nome_continente = Continente.objects.get(slug=slug) 
+        nome_continente = Continente.objects.get(nome=nome) 
         marcas = Marca.objects.filter(continente=nome_continente)
-        return render(request, 'listar_marcas.html', {'marcas': marcas})
+        marcas_pg = Paginator(marcas, 9)
 
-
-def navbar_marcas(request):
-    if request.method == "GET":
-        continentes = Continente.objects.all()
-        return render(request, "base.html", {'continentes': continentes})
+        page_number = request.GET.get('page')
+        page_obj = marcas_pg.get_page(page_number)
+        return render(request, 'listar_marcas.html', {'page_obj': page_obj})

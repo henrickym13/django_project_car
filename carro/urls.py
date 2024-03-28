@@ -4,8 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('continentes/', views.listar_continentes, name="continentes"),
-    path('continentes/<slug:slug>/marcas/', views.exibir_marcas, name="exibir_marcas"),
+    path('continentes/<str:nome>/marcas/', views.exibir_marcas, name="exibir_marcas"),
     path('marcas/<slug:slug>/listar_carros/', views.listar_carros, name='listar_carros'),
     path('carro/<slug:slug>', views.exibir_carro, name="exibir_carro"),
 ]

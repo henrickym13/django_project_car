@@ -8,6 +8,9 @@ class Continente(models.Model):
     imagem = models.ImageField(upload_to="img_continentes")
     slug = models.SlugField(unique=True, blank=True, null=True)
 
+    class Meta:
+        ordering = ['nome']
+
     def __str__(self):
         return self.nome
 
@@ -24,6 +27,9 @@ class Marca(models.Model):
     pais = models.CharField(max_length=20)
     imagem = models.ImageField(upload_to="logo_marca")
     slug = models.SlugField(unique=True, blank=True, null=True)
+
+    class Meta:
+        ordering = ['nome']
     
     def __str__(self):
         return self.nome
@@ -44,6 +50,9 @@ class Carro(models.Model):
     descricao = models.CharField(max_length=1500)
     slug = models.SlugField(unique=True, blank=True, null=True)
     url_video = models.CharField(max_length=60, blank=True, null=True)
+
+    class Meta:
+        ordering = ['nome']
 
     def __str__(self):
         return self.nome

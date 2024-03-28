@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block 'title' %}Carzone - Inicio{% endblock %}
+
+{% block 'css' %}
+<link rel="stylesheet" href="{% static 'carro/css/index.css' %}">
+{% endblock %}
+
+{% block 'body' %}
+<p>
+<div class="card text-bg-dark altura">
+    <img src="{% static '/img/cars_vintage.jpg' %}" class="card-img imagem-car " alt="...">
+    <div class="card-img-overlay align-self-center text-center ">
+        <h1 class="card-title align-self-end">Carzone</h1>
+        <hr class="divider " />
+        <p class="card-text align-self-end">Site para exibir informações de carro</p>
+    </div>
+</div>
+</p>
+
+<p>
+<div class="container-fluid cor_fd">
+    <section class="page-section">
+        <p>
+        <div class="container px-4 px-lg-5">
+            <p>
+                <h2 class="text-center mt-0">Algumas Montadoras</h2>
+                <hr class="divider" />
+            </p>
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <p>
+                            <img class="card-img-top" src="{% static '/img/crevrolet_logo.png' %}">
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <p>
+                            <img class="card-img-top" src="{% static '/img/audi_logo.png' %}">
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <p>
+                            <img class="card-img-top" src="{% static '/img/nissan_logo.png' %}">
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <p>
+                            <img class="card-img-top" src="{% static '/img/dodge_logo.png' %}">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </p>
+    </section>
+</div>
+</p>
+
+<div class="row cor_bg">
+    <p></p>
+    {% for continente in continentes %}
+    <div class="col-md-4">
+        <div class="card mb-4 box-shadow d-flex justify-content-between align-items-center caixa">
+            <img class="card-img-top imagem-car" src="{{continente.imagem.url}}">
+            <h3 class="jumbotron-heading image-con">{{continente.nome}}</h3>
+            <p>
+                <a href="{% url 'exibir_marcas' nome=continente.nome %}"
+                    class="btn btn-primary my-2 cor_fd">Exibir Marcas</a>
+            </p>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

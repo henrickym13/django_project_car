@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{%block 'title' %}Carzone - {{carro.nome}}{% endblock %}
+
 {% block 'css' %}
 <link rel="stylesheet" href="{% static 'carro/css/carro.css' %}">
 {% endblock %}
